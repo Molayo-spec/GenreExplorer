@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Music, Zap, Star, Guitar, Mic2, Music2, Waves, Sun, Trees, Disc, 
-  ChevronRight, Info, Copy, Check, ExternalLink, Search, ListMusic, Dices, Database, X, Youtube
+  ChevronRight, Info, Copy, Check, ExternalLink, Search, ListMusic, Dices, Database, X, Youtube, Moon
 } from "lucide-react";
 import { GENRE_DATA, RootGenre, GenreNode } from "./data";
 import { clsx, type ClassValue } from "clsx";
@@ -112,8 +112,21 @@ export default function App() {
     return saved ? JSON.parse(saved) : [];
   });
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const saved = localStorage.getItem("genre-theme-dark");
+    return saved ? JSON.parse(saved) : false;
+  });
 
   // Persistence
+  useEffect(() => {
+    localStorage.setItem("genre-theme-dark", JSON.stringify(isDarkMode));
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
+
   useEffect(() => {
     localStorage.setItem("genre-favorites", JSON.stringify(favorites));
   }, [favorites]);
@@ -313,7 +326,19 @@ export default function App() {
               검색초기화
             </button>
           </div>
-          <p className="text-[10px] md:text-xs font-bold tracking-widest text-white mt-2 text-center md:text-right">자료를 제공해 주신 FEMO 단톡방의 뿌-귀인께 감사드립니다. ♥</p>
+          <div className="flex flex-col items-center md:items-end w-full">
+            <p className="text-[10px] md:text-xs font-bold tracking-widest text-white mt-2 text-center md:text-right">
+              자료를 제공해 주신 FEMO 단톡방의 뿌-귀인께 감사드립니다. ♥
+            </p>
+            <button
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              className="mt-2 flex items-center gap-1.5 px-3 py-1 bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-600 transition-colors text-[10px] font-bold uppercase"
+              title="Toggle Day/Night Mode"
+            >
+              <Moon size={12} />
+              {isDarkMode ? "Day Mode" : "Night Mode"}
+            </button>
+          </div>
         </div>
       </header>
 

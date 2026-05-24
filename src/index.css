@@ -5,3 +5,68 @@
   --font-sans: "Space Grotesk", "Noto Sans KR", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 }
+
+@layer utilities {
+  html.dark body {
+    background-color: #09090b;
+    color: #fafafa;
+  }
+  html.dark .bg-white {
+    background-color: #18181b !important;
+  }
+  html.dark .bg-\[\#f0f0f0\] {
+    background-color: #09090b !important;
+  }
+  html.dark .text-black {
+    color: #e4e4e7 !important;
+  }
+  html.dark .border-black {
+    border-color: #e4e4e7 !important;
+  }
+  html.dark .shadow-\[4px_4px_0px_0px_rgba\(0\,0\,0\,1\)\] {
+    box-shadow: 4px 4px 0px 0px rgba(228,228,231,1) !important;
+  }
+  html.dark .shadow-\[6px_6px_0px_0px_rgba\(0\,0\,0\,1\)\] {
+    box-shadow: 6px 6px 0px 0px rgba(228,228,231,1) !important;
+  }
+  html.dark .hover\:shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\]:hover {
+    box-shadow: 2px 2px 0px 0px rgba(228,228,231,1) !important;
+  }
+  html.dark .hover\:shadow-\[4px_4px_0px_0px_rgba\(0\,0\,0\,1\)\]:hover {
+    box-shadow: 4px 4px 0px 0px rgba(228,228,231,1) !important;
+  }
+  html.dark .bg-gray-100 {
+    background-color: #27272a !important;
+  }
+  html.dark .bg-gray-50 {
+    background-color: #18181b !important;
+  }
+  html.dark .border-gray-200 {
+    border-color: #3f3f46 !important;
+  }
+  html.dark .text-gray-800, html.dark .text-gray-700 {
+    color: #f4f4f5 !important;
+  }
+  html.dark .text-gray-500 {
+    color: #a1a1aa !important;
+  }
+  html.dark .text-black\/50 {
+    color: rgba(228,228,231,0.5) !important;
+  }
+  html.dark .text-black\/30 {
+    color: rgba(228,228,231,0.3) !important;
+  }
+  html.dark .border-transparent {
+    border-color: transparent !important;
+  }
+  html.dark .hover\:border-black:hover {
+    border-color: #e4e4e7 !important;
+  }
+  /* Buttons like All Words when it is active (cyan) text should be black for contrast, so we must be careful */
+  html.dark .bg-cyan-400.text-black {
+    color: #000000 !important;
+  }
+  html.dark .bg-yellow-400.text-black {
+    color: #000000 !important;
+  }
+}
